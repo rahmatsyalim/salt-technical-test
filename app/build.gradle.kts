@@ -18,7 +18,7 @@ android {
         versionCode = 1
         versionName = "1.0"
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "com.syalim.salt_technical_test.CustomTestRunner"
         vectorDrawables {
             useSupportLibrary = true
         }
@@ -71,13 +71,18 @@ secrets {
 dependencies {
 
     implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
     implementation(libs.androidx.lifecycle.runtime.ktx)
+    implementation(libs.androidx.lifecycle.runtime.compose)
     implementation(libs.androidx.activity.compose)
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.compose.ui)
     implementation(libs.androidx.compose.ui.graphics)
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.compose.material3)
+    implementation(libs.androidx.core.splashscreen)
+    implementation(libs.androidx.navigation.compose)
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
     coreLibraryDesugaring(libs.android.desugar.jdk.libs)
@@ -88,7 +93,9 @@ dependencies {
     implementation(libs.coil.compose)
     // dependency injection
     implementation(libs.google.dagger.hilt.android)
-    ksp(libs.google.dagger.hilt.compiler)
+    ksp(libs.google.dagger.hilt.android.compiler)
+    implementation(libs.androidx.hilt.navigation.compose)
+    ksp(libs.androidx.hilt.compiler)
     // reactive
     implementation(libs.kotlinx.coroutines.android)
     // network
@@ -105,8 +112,12 @@ dependencies {
     implementation(libs.jakewharton.timber)
 
     testImplementation(libs.junit)
+    testImplementation(libs.kotlinx.coroutines.test)
+    androidTestImplementation(libs.google.dagger.hilt.android.testing)
+    kspAndroidTest(libs.google.dagger.hilt.android.compiler)
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.androidx.test.espresso.core)
     androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
+    androidTestImplementation(libs.androidx.navigation.testing)
 }
