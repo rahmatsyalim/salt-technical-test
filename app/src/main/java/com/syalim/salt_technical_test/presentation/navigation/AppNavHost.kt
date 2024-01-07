@@ -11,6 +11,8 @@ import androidx.navigation.compose.NavHost
 import com.syalim.salt_technical_test.presentation.screen.news_main.navigation.NEWS_MAIN_ROUTE
 import com.syalim.salt_technical_test.presentation.screen.news_main.navigation.newsMainScreen
 import com.syalim.salt_technical_test.presentation.screen.AppState
+import com.syalim.salt_technical_test.presentation.screen.news_detail.navigation.navigateToNewsDetail
+import com.syalim.salt_technical_test.presentation.screen.news_detail.navigation.newsDetailScreen
 
 
 @Composable
@@ -19,15 +21,19 @@ fun AppNavHost(
     appState: AppState,
     startDestination: String = NEWS_MAIN_ROUTE
 ) {
+    val navController = appState.navController
+
     NavHost(
         modifier = modifier,
-        navController = appState.navController,
+        navController = navController,
         startDestination = startDestination
     ) {
         newsMainScreen(
-            onNavigateToNewsDetail = {
-                // TODO: navigate to detail
-            }
+            onNavigateToNewsDetail = navController::navigateToNewsDetail
+        )
+
+        newsDetailScreen(
+            onNavigateBack = navController::popBackStack
         )
     }
 

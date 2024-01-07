@@ -89,6 +89,7 @@ dependencies {
     // accompanist
     implementation(libs.google.accompanist.navigation.animation)
     implementation(libs.google.accompanist.systemuicontroller)
+    implementation(libs.google.accompanist.webview)
     // paging
     implementation(libs.androidx.paging.compose)
     implementation(libs.androidx.paging.runtime)
