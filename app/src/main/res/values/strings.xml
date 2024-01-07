@@ -1,4 +1,12 @@
 <resources>
     <string name="app_name">Today\'s News</string>
+    <string name="top_headlines">Top Headlines</string>
     <string name="no_internet_connection">No internet connection.</string>
+    <string name="timeout_message">Timeout Message</string>
+    <string name="server_error_message">Server Error Message</string>
+    <string name="bad_request_message">Bad Request Message</string>
+    <string name="unauthorized_message">Unauthorized Message</string>
+    <string name="could_not_reach_server_message">Could Not Reach Server Message</string>
+    <string name="too_many_request_message">Too Many Request Message</string>
+    <string name="unexpected_error_message">Unexpected Error Message</string>
 </resources>

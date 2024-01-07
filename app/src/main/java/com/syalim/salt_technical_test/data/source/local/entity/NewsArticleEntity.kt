@@ -10,9 +10,9 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "news_articles")
 data class NewsArticleEntity(
     val author: String?,
-    val description: String,
+    val description: String?,
     val publishedAt: String,
-    val source: String,
+    val source: String?,
     @PrimaryKey
     val title: String,
     val url: String,

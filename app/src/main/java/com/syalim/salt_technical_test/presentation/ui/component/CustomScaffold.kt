@@ -7,7 +7,6 @@ package com.syalim.salt_technical_test.presentation.ui.component
 
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
@@ -31,7 +30,7 @@ fun CustomScaffold(
     snackbarHostState: CustomSnackbarHostState? = null,
     pullRefreshState: PullRefreshState? = null,
     backgroundColor: Color = MaterialTheme.colorScheme.background,
-    content: @Composable (innerPadding: PaddingValues) -> Unit
+    content: @Composable () -> Unit
 ) {
     Scaffold(
         modifier = modifier,
@@ -39,16 +38,17 @@ fun CustomScaffold(
         topBar = topBar,
         bottomBar = bottomBar
     ) { innerPadding ->
-        content(innerPadding)
+        content()
         if (pullRefreshState != null) {
             Box(
                 modifier = Modifier
+                    .padding(innerPadding)
                     .fillMaxSize()
                     .pullRefresh(state = pullRefreshState),
                 content = {
-                    content(innerPadding)
+                    content()
                     val padding by animateDpAsState(
-                        targetValue = if (pullRefreshState.refreshing) innerPadding.calculateTopPadding() + 16.dp
+                        targetValue = if (pullRefreshState.refreshing) 56.dp
                         else 0.dp,
                         label = "pull_indicator_padding"
                     )
@@ -59,13 +59,12 @@ fun CustomScaffold(
                         refreshing = pullRefreshState.refreshing,
                         state = pullRefreshState,
                         contentColor = MaterialTheme.colorScheme.primary,
-                        backgroundColor = Color.Unspecified,
                         scale = true
                     )
                 }
             )
         } else {
-            content(innerPadding)
+            content()
         }
         if (snackbarHostState != null) {
             CustomSnackbarHost(

@@ -41,32 +41,41 @@ class RemoteKeyDaoTest {
     }
 
     @Test
-    fun getKey_assert_remoteKey_is_correct() = runTest {
-        val key = RemoteKeyEntity("a", null)
-        remoteKeyDao.upsertKey(key)
-        val savedKey = remoteKeyDao.getKey("a")
+    fun getRemoteKey_assert_remoteKey_is_saved() = runTest {
+        val key = testFakeRemoteKey("a", 1)
+        remoteKeyDao.upsertAll(listOf(key))
+        val savedKey = remoteKeyDao.getRemoteKey("a")
         assertEquals(savedKey, key)
     }
 
     @Test
-    fun upsertKey_assert_remoteKey_is_replaced() = runTest {
-        val key = RemoteKeyEntity("a", null)
-        remoteKeyDao.upsertKey(key)
-        val updatedKey = RemoteKeyEntity("b", 1)
-        remoteKeyDao.upsertKey(updatedKey)
-        val savedKey = remoteKeyDao.getKey("b")
+    fun upsertAll_assert_remoteKey_is_replaced() = runTest {
+        val key = testFakeRemoteKey("a", 1)
+        remoteKeyDao.upsertAll(listOf(key))
+        val updatedKey = testFakeRemoteKey("a",2)
+        remoteKeyDao.upsertAll(listOf(updatedKey))
+        val savedKey = remoteKeyDao.getRemoteKey("a")
         assertEquals(savedKey, updatedKey)
     }
 
     @Test
-    fun deleteKey_assert_remoteKey_is_deleted() = runTest {
-        val key = RemoteKeyEntity("a", null)
-        remoteKeyDao.upsertKey(key)
-        val savedKey = remoteKeyDao.getKey("a")
+    fun clearAll_assert_remoteKeys_are_all_deleted() = runTest {
+        val key = testFakeRemoteKey("a", 1)
+        remoteKeyDao.upsertAll(listOf(key))
+        val savedKey = remoteKeyDao.getRemoteKey("a")
         assertEquals(savedKey, key)
-        remoteKeyDao.deleteKey("a")
-        val updatedSavedKey = remoteKeyDao.getKey("a")
+        remoteKeyDao.clearAll()
+        val updatedSavedKey = remoteKeyDao.getRemoteKey("a")
         assertEquals(updatedSavedKey, null)
     }
 
+}
+
+private fun testFakeRemoteKey(label: String, currentPage: Int): RemoteKeyEntity {
+    return RemoteKeyEntity(
+        label,
+        null,
+        null,
+        currentPage
+    )
 }

@@ -5,8 +5,6 @@
 
 package com.syalim.salt_technical_test.data.mapper
 
-import androidx.paging.PagingData
-import androidx.paging.map
 import com.syalim.salt_technical_test.data.source.local.entity.NewsArticleEntity
 import com.syalim.salt_technical_test.data.source.network.response.NewsArticleResponse
 import com.syalim.salt_technical_test.domain.model.NewsArticle
@@ -15,9 +13,9 @@ import com.syalim.salt_technical_test.domain.model.NewsArticle
 fun NewsArticleResponse.asNewsArticleEntity(): NewsArticleEntity {
     return NewsArticleEntity(
         author = author,
-        description = description ?: "No Description.",
+        description = description,
         publishedAt = publishedAt,
-        source = source?.name ?: "Unknown",
+        source = source?.name,
         title = title,
         url = url,
         urlToImage = urlToImage
@@ -26,10 +24,10 @@ fun NewsArticleResponse.asNewsArticleEntity(): NewsArticleEntity {
 
 fun NewsArticleEntity.asNewsArticle(): NewsArticle {
     return NewsArticle(
-        author = author,
-        description = description,
+        author = author ?: "Unknown",
+        description = description ?:"No Description.",
         publishedAt = publishedAt,
-        source = source,
+        source = source ?: "Unknown",
         title = title,
         url = url,
         urlToImage = urlToImage

@@ -11,7 +11,7 @@ import retrofit2.http.Query
 
 interface NewsApi {
 
-    @GET("v2/top-headlines?country=id&pageSize={pageSize}&page={page}")
+    @GET("v2/top-headlines?country=id")
     suspend fun getTopHeadlines(
         @Query("pageSize") pageSize: Int,
         @Query("page") page: Int

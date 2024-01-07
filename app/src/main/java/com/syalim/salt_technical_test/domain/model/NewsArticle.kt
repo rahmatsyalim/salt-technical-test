@@ -6,7 +6,7 @@ package com.syalim.salt_technical_test.domain.model
 */
 
 data class NewsArticle(
-    val author: String?,
+    val author: String,
     val description: String,
     val publishedAt: String,
     val source: String,

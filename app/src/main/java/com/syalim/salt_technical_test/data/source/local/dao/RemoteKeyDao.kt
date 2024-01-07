@@ -14,11 +14,11 @@ import com.syalim.salt_technical_test.data.source.local.entity.RemoteKeyEntity
 interface RemoteKeyDao {
 
     @Upsert
-    suspend fun upsertKey(key: RemoteKeyEntity)
+    suspend fun upsertAll(keys: List<RemoteKeyEntity>)
 
     @Query("select * from remote_keys where label=:label")
-    suspend fun getKey(label: String): RemoteKeyEntity?
+    suspend fun getRemoteKey(label: String): RemoteKeyEntity?
 
-    @Query("delete from remote_keys WHERE label=:label")
-    suspend fun deleteKey(label: String)
+    @Query("delete from remote_keys")
+    suspend fun clearAll()
 }

@@ -11,5 +11,7 @@ import androidx.room.PrimaryKey
 data class RemoteKeyEntity(
     @PrimaryKey
     val label: String,
-    val nextPage: Int?
+    val nextPage: Int?,
+    val prevPage: Int?,
+    val currentPage: Int
 )

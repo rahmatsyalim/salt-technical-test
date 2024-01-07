@@ -28,7 +28,8 @@ object NetworkModule {
 
     @Provides
     fun providesOkhttpClient(
-        authInterceptor: AuthInterceptor
+        authInterceptor: AuthInterceptor,
+        loggingInterceptor: LoggingInterceptor
     ): OkHttpClient = OkHttpClient.Builder()
         .connectTimeout(60L, TimeUnit.SECONDS)
         .readTimeout(60L, TimeUnit.SECONDS)
@@ -37,7 +38,11 @@ object NetworkModule {
         .apply {
             if (BuildConfig.DEBUG) {
                 addInterceptor(
-                    HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BASIC)
+                    HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.HEADERS)
+                )
+                addInterceptor(
+                    HttpLoggingInterceptor(loggingInterceptor)
+                        .setLevel(HttpLoggingInterceptor.Level.BODY)
                 )
             }
         }
