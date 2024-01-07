@@ -5,10 +5,7 @@
 
 package com.syalim.salt_technical_test.data.util
 
-import com.syalim.salt_technical_test.domain.util.InternetMonitor
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
@@ -21,7 +18,7 @@ import org.junit.Test
 @OptIn(ExperimentalCoroutinesApi::class)
 class InternetMonitorTest {
 
-    private val internetMonitor = FakeInternetMonitor()
+    private val internetMonitor = FakeInternetMonitorImpl()
 
     @Test
     fun isOnline_equals_true_when_connected() = runTest(UnconfinedTestDispatcher()) {
@@ -47,15 +44,4 @@ class InternetMonitorTest {
         assertEquals(false, isOnline)
     }
 
-}
-
-class FakeInternetMonitor : InternetMonitor {
-
-    private val connectivity = MutableStateFlow(true)
-
-    override val isOnline: Flow<Boolean> = connectivity
-
-    fun setConnected(value: Boolean) {
-        connectivity.value = value
-    }
 }

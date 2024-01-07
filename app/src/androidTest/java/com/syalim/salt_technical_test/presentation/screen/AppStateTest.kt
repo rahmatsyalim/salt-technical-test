@@ -14,7 +14,7 @@ import androidx.navigation.compose.ComposeNavigator
 import androidx.navigation.compose.composable
 import androidx.navigation.createGraph
 import androidx.navigation.testing.TestNavHostController
-import com.syalim.salt_technical_test.data.util.FakeInternetMonitor
+import com.syalim.salt_technical_test.data.util.FakeInternetMonitorImpl
 import com.syalim.salt_technical_test.domain.util.InternetMonitor
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
@@ -90,7 +90,7 @@ class AppStateTest {
             )
         }
         backgroundScope.launch { appState.isOffline.collect() }
-        (internetMonitor as FakeInternetMonitor).setConnected(true)
+        (internetMonitor as FakeInternetMonitorImpl).setConnected(true)
         assertEquals(false, appState.isOffline.value)
     }
 
@@ -107,7 +107,7 @@ class AppStateTest {
             )
         }
         backgroundScope.launch { appState.isOffline.collect() }
-        (internetMonitor as FakeInternetMonitor).setConnected(false)
+        (internetMonitor as FakeInternetMonitorImpl).setConnected(false)
         assertEquals(true, appState.isOffline.value)
     }
 

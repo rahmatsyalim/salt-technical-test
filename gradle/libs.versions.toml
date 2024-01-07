@@ -11,7 +11,8 @@ androidx-navigation = "2.7.6"
 androidx-activity = "1.8.2"
 androidx-compose-bom = "2023.10.00"
 androidx-hilt-ext = "1.1.0"
-androidxRoom = "2.6.1"
+androidx-paging = "3.2.1"
+androidx-room = "2.6.1"
 coil = "2.4.0"
 google-accompanist = "0.32.0"
 google-ksp = "1.9.10-1.0.13"
@@ -48,11 +49,14 @@ androidx-hilt-compiler = { group = "androidx.hilt", name = "hilt-compiler", vers
 androidx-hilt-navigation-compose = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "androidx-hilt-ext" }
 androidx-navigation-compose = { group = "androidx.navigation", name ="navigation-compose", version.ref="androidx-navigation"}
 androidx-navigation-testing = { group = "androidx.navigation", name ="navigation-testing", version.ref="androidx-navigation"}
+androidx-paging-compose = { module = "androidx.paging:paging-compose", version.ref = "androidx-paging" }
+androidx-paging-runtime = { module = "androidx.paging:paging-runtime", version.ref = "androidx-paging" }
 coil-compose = { group = "io.coil-kt", name = "coil-compose", version.ref = "coil" }
 google-accompanist-navigation-animation = { group = "com.google.accompanist", name = "accompanist-navigation-animation", version.ref = "google-accompanist" }
 google-accompanist-systemuicontroller = { group = "com.google.accompanist", name = "accompanist-systemuicontroller", version.ref = "google-accompanist" }
-androidx-room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "androidxRoom" }
-androidx-room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "androidxRoom" }
+androidx-room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "androidx-room" }
+androidx-room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "androidx-room" }
+androidx-room-paging = { group = "androidx.room", name = "room-paging", version.ref = "androidx-room" }
 jakewharton-timber = { group = "com.jakewharton.timber", name = "timber", version.ref = "jakewhartonTimber" }
 google-dagger-hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "google-dagger-hilt" }
 google-dagger-hilt-android-testing = { group = "com.google.dagger", name = "hilt-android-testing", version.ref = "google-dagger-hilt" }

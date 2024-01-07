@@ -11,7 +11,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import javax.inject.Inject
 
 
-class FakeInternetMonitor @Inject constructor() : InternetMonitor {
+class FakeInternetMonitorImpl @Inject constructor() : InternetMonitor {
 
     private val connectivity = MutableStateFlow(true)
 

@@ -89,6 +89,9 @@ dependencies {
     // accompanist
     implementation(libs.google.accompanist.navigation.animation)
     implementation(libs.google.accompanist.systemuicontroller)
+    // paging
+    implementation(libs.androidx.paging.compose)
+    implementation(libs.androidx.paging.runtime)
     // image processor
     implementation(libs.coil.compose)
     // dependency injection
@@ -108,6 +111,7 @@ dependencies {
     // local db
     implementation(libs.androidx.room.ktx)
     ksp(libs.androidx.room.compiler)
+    implementation(libs.androidx.room.paging)
     // logger
     implementation(libs.jakewharton.timber)
 

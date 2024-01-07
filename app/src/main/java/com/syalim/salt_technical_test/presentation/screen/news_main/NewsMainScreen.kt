@@ -17,6 +17,7 @@ fun NewsMainScreen(
     viewModel: NewsMainViewModel = hiltViewModel(),
     onNavigateToNewsDetail: (url: String) -> Unit
 ) {
+
     CustomScaffold(
         modifier = modifier
     ) {

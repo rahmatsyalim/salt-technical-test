@@ -5,7 +5,7 @@
 
 package com.syalim.salt_technical_test.data
 
-import com.syalim.salt_technical_test.data.util.FakeInternetMonitor
+import com.syalim.salt_technical_test.data.util.FakeInternetMonitorImpl
 import com.syalim.salt_technical_test.domain.util.InternetMonitor
 import dagger.Binds
 import dagger.Module
@@ -22,6 +22,6 @@ abstract class TestDataModule {
 
     @Binds
     abstract fun bindsInternetMonitor(
-        internetMonitor: FakeInternetMonitor
+        internetMonitor: FakeInternetMonitorImpl
     ): InternetMonitor
 }

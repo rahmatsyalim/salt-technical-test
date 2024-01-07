@@ -1,7 +1,7 @@
 package com.syalim.salt_technical_test.data
 
-import com.syalim.salt_technical_test.domain.util.InternetMonitor
 import com.syalim.salt_technical_test.data.util.InternetMonitorImpl
+import com.syalim.salt_technical_test.domain.util.InternetMonitor
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -17,7 +17,6 @@ import dagger.hilt.components.SingletonComponent
 abstract class DataModule {
 
     @Binds
-    abstract fun bindsInternetMonitor(
-        internetMonitor: InternetMonitorImpl
-    ): InternetMonitor
+    abstract fun bindsInternetMonitor(internetMonitor: InternetMonitorImpl): InternetMonitor
+
 }
